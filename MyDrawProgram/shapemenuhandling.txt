@@ -1,0 +1,42 @@
+// import:
+
+import java.awt.event.*;
+
+// constructor:
+
+      // build the commands
+      cmdLine = new MyCheckBoxMenuItem( "Line", 'L' );
+      cmdPolyline = new MyCheckBoxMenuItem( "Polyline", 'P' );
+      // add them to the menu
+      this.add( cmdLine );
+      this.add( cmdPolyline );
+      // register this menu object to listen to the commands
+      cmdLine.addActionListener( this );
+      cmdPolyline.addActionListener( this );
+      // turn on the line command
+      cmdLine.setState( true );
+      
+// actionPerformed:
+
+      if ( e.getSource( ) == cmdLine )
+      {
+         clearShapeMenuItems( );
+         cmdLine.setState( true );
+         canvas.setSelectedShape( Canvas.LINE );
+      }
+      if ( e.getSource( ) == cmdPolyline )
+      {
+         clearShapeMenuItems( );
+         cmdPolyline.setState( true );
+         canvas.setSelectedShape( Canvas.POLYLINE );
+      }
+      else
+         /* unrecoverable non-user error */ ;
+         
+// utility:
+
+   private void clearShapeMenuItems( )
+   {
+      cmdLine.setState( false );
+      cmdPolyline.setState( false );
+   }

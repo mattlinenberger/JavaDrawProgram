@@ -1,0 +1,47 @@
+// imports:
+
+import java.util.*;
+
+// internal data for class:
+   
+   // internal data for polyline drawing
+   private boolean mouseClicked;
+   ArrayList<Integer> x = new ArrayList<Integer>(5);
+   ArrayList<Integer> y = new ArrayList<Integer>(5); 
+
+// mouse clicked:
+
+      if ( selectedShape == POLYLINE )
+      {
+         if ( e.getClickCount( ) == 1 && !mouseClicked ) // first click
+         {
+            x.clear( );             // clear array lists
+            y.clear( );
+            x.add( e.getX( ) );     // save new point
+            y.add( e.getY( ) );
+            mouseClicked = true;    // signal started
+         }
+         else if ( e.getClickCount( ) == 1 && mouseClicked ) // subsequent click
+         {
+            x.add( e.getX( ) );     // save new point
+            y.add( e.getY( ) );
+            repaint( );
+         }
+         else if ( e.getClickCount( ) == 2 ) // last click
+         {
+            x.add( e.getX( ) );     // save new point
+            y.add( e.getY( ) );
+            mouseClicked = false;   // signal done
+            repaint( ); 
+         }        
+      }   
+      
+// mouse moved:
+
+      if ( selectedShape == POLYLINE && mouseClicked )
+      {
+         mouseIsAtX = e.getX( );
+         mouseIsAtY = e.getY( );
+         repaint( );
+      }
+      

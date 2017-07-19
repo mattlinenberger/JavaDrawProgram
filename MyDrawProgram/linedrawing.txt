@@ -1,0 +1,76 @@
+// imports:
+
+import java.awt.*;
+
+// internal data for class:
+   
+   // internal data for shapes with get and set methods
+   // public ease-of-use constants
+   public static final int LINE = 0;
+   // currently selected shape
+   private int selectedShape;
+   
+   public int getSelectedShape( )
+   {
+      return selectedShape;
+   }   
+   
+   public void setSelectedShape( int shape )
+   {
+      selectedShape = shape;
+   } 
+   
+   // internal data for line drawing
+   private boolean mouseDown;
+   private int mouseDownX, mouseDownY;
+   private int mouseUpX,   mouseUpY;
+   private int mouseIsAtX, mouseIsAtY;
+
+// constructor:
+   
+         selectedShape = LINE;
+         this.addMouseListener( this );
+         this.addMouseMotionListener( this );
+
+// paint:
+         
+      g.setColor( Color.BLACK );
+      switch ( selectedShape )
+      {
+         case LINE:
+            if ( mouseDown )
+               g.drawLine( mouseDownX, mouseDownY, mouseIsAtX, mouseIsAtY );
+            else
+               g.drawLine( mouseDownX, mouseDownY, mouseUpX, mouseUpY );
+            break;
+         default:
+            /* unrecoverable non-user error */ ;
+      }
+
+// mousePressed:
+      
+      if ( selectedShape == LINE )
+      {
+         mouseDown = true;
+         mouseDownX = e.getX( );
+         mouseDownY = e.getY( );
+      }
+
+// mouseReleased:
+      
+      if ( selectedShape == LINE )
+      {
+         mouseDown = false;
+         mouseUpX = e.getX( );
+         mouseUpY = e.getY( );
+         repaint( ); 
+      }
+
+// mouseDragged:
+      
+      if ( selectedShape == LINE )
+      {
+         mouseIsAtX = e.getX( );
+         mouseIsAtY = e.getY( );
+         repaint( );
+      }

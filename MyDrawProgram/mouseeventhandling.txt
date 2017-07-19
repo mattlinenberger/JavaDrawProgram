@@ -1,0 +1,44 @@
+// imports:
+
+import java.awt.event.*;
+
+// class implementations for mouse events:
+
+   implements MouseListener, MouseMotionListener
+
+// mouse event handling methods
+
+   //======== MouseListener event handlers ==========================
+
+   public void mouseEntered( MouseEvent e )
+   {
+   }
+
+   public void mouseExited( MouseEvent e )
+   {
+   }
+
+   public void mousePressed( MouseEvent e )
+   // Capture mouse down position and signal started.
+   {
+   }
+
+   public void mouseReleased( MouseEvent e )
+   // Capture mouse up position and signal done.
+   {
+   }
+
+   public void mouseClicked( MouseEvent e )
+   {
+   }
+
+   //======== MouseMotionListener event handlers =======================
+
+   public void mouseMoved( MouseEvent e )
+   {
+   }
+
+   public void mouseDragged( MouseEvent e )
+   // Capture mouse position and draw to down point.
+   {
+   } 
